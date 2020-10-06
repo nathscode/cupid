@@ -31,8 +31,8 @@ const DesktopNav = (props) => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/editorial" className="nav-link">
-            Editorial
+          <NavLink to="/portrait" className="nav-link">
+            Portrait
           </NavLink>
         </li>
         <li className="nav-item">

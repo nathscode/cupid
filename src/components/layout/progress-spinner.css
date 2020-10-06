@@ -1,0 +1,55 @@
+.progress-container {
+  width: 300px;
+  margin: auto;
+}
+.progress-bar {
+  height: 4px;
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+  overflow: hidden;
+}
+.progress {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  animation: indeterminationAnimation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+
+.spinner-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.spinner-container span {
+  font-weight: 500;
+  margin-left: 10px;
+}
+.spinner {
+  pointer-events: none;
+  width: 2em;
+  height: 2em;
+  border: 0.2em solid transparent;
+  border-color: rgb(238, 238, 238);
+  border-top-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  animation: loadingSpin 1s linear infinite;
+}
+
+@keyframes indeterminationAnimation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+  40% {
+    transform: translateX(0) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(100) scaleX(0.5);
+  }
+}
+
+@keyframes loadingSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

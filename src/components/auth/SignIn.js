@@ -7,7 +7,6 @@ const SignIn = (props) => {
   const [display, setDisplay] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -35,7 +34,7 @@ const SignIn = (props) => {
       <div className="backdrop">
         <div className="mini-wrapper">
           <div className="row justify-content-center relative">
-            <div className="col form-section">
+            <div className="form-section">
               <div className="close">
                 <button
                   onClick={closeModal}
@@ -68,9 +67,6 @@ const SignIn = (props) => {
                     className="form-input mt-2"
                     onChange={(event) => onChangeHandler(event)}
                   />
-                </div>
-                <div className="error-section">
-                  {error !== null && <div className="error-text">{error}</div>}
                 </div>
                 <div className="mtb-3">
                   <input

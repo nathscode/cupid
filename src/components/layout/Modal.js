@@ -23,11 +23,11 @@ const Modal = forwardRef((props, ref) => {
       <div className="backdrop">
         <div className="mini-wrapper">
           <div className="row justify-content-center relative">
-            <div className="col form-section">
+            <div className="form-section">
               <div className="close">
                 <button
                   onClick={closeModal}
-                  className="button button-secondary"
+                  className="button modal-btn button-secondary"
                 >
                   Close
                 </button>

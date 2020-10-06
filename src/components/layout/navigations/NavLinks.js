@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
 
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";

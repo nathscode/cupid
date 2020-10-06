@@ -7,43 +7,101 @@ const useStorage = (data) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
-  const [isUploading, setIsUploading] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
 
-  const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-
-  useEffect(() => {
-    // references
-    const storageRef = firebase.storage().ref(data.file.name);
-    const collectionRef = firebase.firestore().collection("photos");
-
-    storageRef.put(data.file).on(
-      "state_changed",
-      (snap) => {
+  console.log("useStorage", data);
+  const cate = data.category.toString().toLowerCase();
+  const files = data.files;
+  const collectionRef = firebase.firestore().collection("photos");
+  const storageRef = firebase.storage();
+  files.forEach((file) => {
+    const uploadTask = storageRef
+      .ref()
+      .child(`cupid-images/${file.name}`)
+      .put(file);
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) => {
         const isUploading = true;
         setIsUploading(isUploading);
-        let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-        setProgress(percentage);
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        if (snapshot.state === firebase.storage.TaskState.RUNNING) {
+          setProgress(progress);
+        }
       },
-      (err) => {
-        setError(err);
+      (error) => {
+        setError("Error Occurred");
+        console.log(error.code);
       },
       async () => {
-        const category = data.category;
-        const url = await storageRef.getDownloadURL();
-        const createdAt = timestamp();
-        await collectionRef.add({
-          category: category,
+        const url = await uploadTask.snapshot.ref.getDownloadURL();
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+        const uploadData = {
+          category: cate,
           url: url,
-          createdAt,
-        });
+          createdAt: timestamp(),
+        };
+        console.log(uploadData);
+        collectionRef.add(uploadData);
+        setUrl(url);
         const isUploading = false;
         setIsUploading(isUploading);
-        setUrl(url);
       }
     );
-  }, [data]);
+  });
+  useEffect(() => {
+    if (!isUploading) return;
+  }, [isUploading]);
 
   return { progress, url, error, isUploading };
 };
 
 export default useStorage;
+
+/*
+
+for (let i = 0; i < data.files.length; i++) {
+      let files = data.files[i];
+      const storageRef = firebase
+        .storage()
+        .ref(`cupid-images/${files.name}`)
+        .put(files);
+      storageRef.on(
+        "state_changed",
+        (snap) => {
+          const isUploading = true;
+          setIsUploading(isUploading);
+          let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+          setProgress(percentage);
+        },
+        (err) => {
+          setError(err);
+          console.log(error);
+        },
+        async () => {
+          firebase
+            .storage()
+            .ref("cupid-images")
+            .child(files.name)
+            .getDownloadURL()
+            .then((url) => {
+              const isUploading = false;
+              setIsUploading(isUploading);
+              const category = photoCategory;
+              const createdAt = timestamp();
+              const uploadData = {
+                category: category,
+                url: url,
+                createdAt: createdAt,
+              };
+              console.log(uploadData);
+              collectionRef.add(uploadData);
+              setUrl(url);
+            });
+        }
+      );
+    }
+
+
+*/

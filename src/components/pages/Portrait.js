@@ -1,6 +1,6 @@
 import React from "react";
 
-const Editorial = () => {
+const Portrait = () => {
   return (
     <main className="main">
       <div className="wrapper"></div>
@@ -8,4 +8,4 @@ const Editorial = () => {
   );
 };
 
-export default Editorial;
+export default Portrait;

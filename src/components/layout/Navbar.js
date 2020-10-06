@@ -20,7 +20,7 @@ const Navbar = (props) => {
         <div className="header">
           <div className="brand_logo">
             <Link to="/">
-              <img src="./assets/img/brand/new.png" alt="cupidshotit logo" />
+              <img src="./assets/img/brand/new-brand.png" alt="cupidshotit logo" />
             </Link>
           </div>
         </div>

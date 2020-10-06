@@ -10,16 +10,18 @@ const Contact = () => {
             <div className="info-item">
               <i className="bx bx-home"></i>
               <h6>Delta State, Nigeria</h6>
-              <p>Fupre campus</p>
+              <p>No 23 Updelta Jakpa Road, Warri.</p>
             </div>
             <div className="info-item">
               <i className="bx bx-phone-call"></i>
-              <h6>09039393939</h6>
+              <h6>08136894689</h6>
               <p>Available on schedule</p>
             </div>
             <div className="info-item">
               <i className="bx bx-envelope"></i>
-              <h6>cupidshotit@gmail.com</h6>
+              <h6>
+                <a href="mailto:cupidshotit@gmail.com">cupidshotit@gmail.com</a>
+              </h6>
               <p>Inbox me anytime</p>
             </div>
           </div>

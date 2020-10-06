@@ -14,8 +14,9 @@ const Service = () => {
               <div className="desc">
                 <h3>Photography</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                  doloremque impedit quis commodi ratione asperiores?
+                  Use various photographic techniques and lighting equipment,
+                  enhance the subject’s appearance with natural or artificial
+                  light, choosing and setting up location.
                 </p>
               </div>
             </div>
@@ -28,8 +29,9 @@ const Service = () => {
               <div className="desc">
                 <h3>Image processing</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                  doloremque impedit quis commodi ratione asperiores?
+                  Composition of photographs using photo-enhancing software for
+                  editing and retouching images reproducing and framing
+                  photographs.
                 </p>
               </div>
             </div>
@@ -42,8 +44,9 @@ const Service = () => {
               <div className="desc">
                 <h3>Videography</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                  doloremque impedit quis commodi ratione asperiores?
+                  Analyze and plan coverage of videos composition, editing and
+                  effects, in various fields cinematography, short clips,
+                  filming.
                 </p>
               </div>
             </div>
